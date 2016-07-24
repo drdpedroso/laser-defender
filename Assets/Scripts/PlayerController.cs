@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public float padding = 1f;
 	public GameObject projectile;
 	public float projectileSpeed;
+	public float firingRate = 0.2f;
 	
 	float xmin;
 	float xmax;
@@ -27,7 +28,11 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 		if(Input.GetKeyDown(KeyCode.Space)){
-			Fire();
+			InvokeRepeating("Fire", 0.000001f, firingRate);
+		}
+		
+		if(Input.GetKeyUp(KeyCode.Space)){
+			CancelInvoke("Fire");
 		}
 		
 		if (Input.GetKey(KeyCode.LeftArrow)){

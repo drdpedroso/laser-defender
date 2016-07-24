@@ -19,11 +19,15 @@ public class PlayerController : MonoBehaviour {
 		xmax = rightmost.x - padding;
 	}
 	
+	void Fire() {
+		GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+	}
+	
 	void Update () {
 		
-		if(Input.GetKey(KeyCode.Space)){
-			GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
-			beam.rigidbody2D.velocity = new Vector3(0, projectileSpeed, 0);
+		if(Input.GetKeyDown(KeyCode.Space)){
+			Fire();
 		}
 		
 		if (Input.GetKey(KeyCode.LeftArrow)){

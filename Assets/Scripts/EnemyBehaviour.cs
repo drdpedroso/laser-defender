@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	public GameObject projectile;
 	public float projectileSpeed = 10f;
 	public float healt = 150f;
-	public float shotsPerSeconds = 0.2f;
+	public float shotsPerSeconds = 2f;
 	
 	void Update(){
 		float probability = Time.deltaTime * shotsPerSeconds;

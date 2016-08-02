@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
 	public GameObject enemyPrefab;
+	public GameObject focus;
 	public float width = 10f;
 	public float height = 5f;
 	public float speed = 5;
@@ -31,6 +32,11 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject enemy = Instantiate(enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = child;
 		}
+		foreach(Transform child in transform){
+			GameObject foc = Instantiate(focus, child.transform.position, Quaternion.identity) as GameObject;
+			foc.transform.parent = child;
+		}
+//		GameObject foc = Instantiate(focus, new Vector3(1,0, 0), Quaternion.identity) as GameObject;
 	}
 	
 	void SpawnUntilFull(){

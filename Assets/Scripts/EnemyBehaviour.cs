@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		    healt -= missile.GetDamage();
 		    missile.Hit();
 		    if(healt <= 0){
-		    	Destroy(gameObject);
+				GameObject.Destroy(gameObject);
 		    }
 		}
 		

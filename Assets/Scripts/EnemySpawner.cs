@@ -41,11 +41,12 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject enemy = Instantiate(enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = freePosition;
 		}
-
+		
 		
 		if(NextFreePosition()){
 			Invoke("SpawnUntilFull", spawnDelay);	
 		}
+
 	}
 	
 	public void OnDrawGizmos() {
@@ -69,8 +70,9 @@ public class EnemySpawner : MonoBehaviour {
 		}
 		
 		if(AllMembersDead()){
-			Debug.Log("Empty Formation");
-			SpawnUntilFull();
+			if (GameObject.Find("Focus(Clone)") != null){
+				SpawnUntilFull();
+			}
 		}
 	
 	}

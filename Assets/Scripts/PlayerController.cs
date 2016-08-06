@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour {
 	
 		Projectile missile = collider.gameObject.GetComponent<Projectile>();
 		if(missile){
-			Debug.Log("Player hi");
 			healt -= missile.GetDamage();
 			missile.Hit();
 			if(healt <= 0){

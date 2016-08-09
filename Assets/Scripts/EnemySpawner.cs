@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour {
 	public float width = 10f;
 	public float height = 5f;
 	public float speed = 5;
-	public float spawnDelay = 0.5f;
+	public float spawnDelay = 3f;
 	
 	private bool movingRight = true;
 	private float xmax;
@@ -25,14 +25,6 @@ public class EnemySpawner : MonoBehaviour {
 		xmax = rightBoundary.x;
 		xmin = leftBoundary.x;
 		SpawnUntilFull();
-	}
-	
-	void SpawnEnemies(){
-		foreach(Transform child in transform){
-			GameObject enemy = Instantiate(enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
-			enemy.transform.parent = child;
-		}
-		
 	}
 	
 	void SpawnUntilFull(){

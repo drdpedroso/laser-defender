@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour {
 	public float width = 10f;
 	public float height = 5f;
 	public float speed = 5;
-	public float spawnDelay = 0.5f;
+	public float spawnDelay = 0.00001f;
 	
 	private bool movingRight = true;
 	private float xmax;
@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour {
 		
 		
 		if(NextFreePosition()){
-			Invoke("SpawnUntilFull", spawnDelay);	
+			Invoke("SpawnEnemies", spawnDelay);	
 		}
 
 	}
@@ -66,6 +66,11 @@ public class EnemySpawner : MonoBehaviour {
 		if(leftEdgeOfFormation < xmin){
 			movingRight = true;
 		} else if(rightEdgeOfFormation > xmax){
+			Transform freePosition = NextFreePosition();
+			if(freePosition){
+				GameObject enemy = Instantiate(enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
+				enemy.transform.parent = freePosition;
+			}
 			movingRight = false;
 		}
 

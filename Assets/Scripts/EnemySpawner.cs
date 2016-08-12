@@ -68,8 +68,10 @@ public class EnemySpawner : MonoBehaviour {
 		} else if(rightEdgeOfFormation > xmax){
 			Transform freePosition = NextFreePosition();
 			if(freePosition){
-				GameObject enemy = Instantiate(enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
-				enemy.transform.parent = freePosition;
+				if (GameObject.Find(focus.name + "(Clone)") != null){
+					GameObject enemy = Instantiate(enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
+					enemy.transform.parent = freePosition;
+				}
 			}
 			movingRight = false;
 		}

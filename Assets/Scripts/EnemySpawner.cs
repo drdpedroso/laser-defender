@@ -71,6 +71,8 @@ public class EnemySpawner : MonoBehaviour {
 				if (GameObject.Find(focus.name + "(Clone)") != null){
 					GameObject enemy = Instantiate(enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
 					enemy.transform.parent = freePosition;
+				} else if((GameObject.Find(enemyPrefab.name + "(Clone)") == null) && enemyPrefab.name != focus.name) {
+					Application.LoadLevel ("SelectLevel");
 				}
 			}
 			movingRight = false;

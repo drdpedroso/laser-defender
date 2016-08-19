@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour {
 			missile.Hit();
 			if(healt <= 0){
 				Destroy(gameObject);
+				Application.LoadLevel ("SelectLevel");
 			}
 		}
 		
